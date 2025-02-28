@@ -23,23 +23,19 @@ class MainActivity : AppCompatActivity() {
         btValidate.setOnClickListener {
             val emailid = etEmailId.text.toString().trim()
             val password= etPassWord.text.toString().trim()
-            //to check if the fields are not empty
             if(emailid.isEmpty() || password.isEmpty())
             {
                 Toast.makeText(this,"Fill all the fields.",Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            //Accept only alphabets
             if(!emailid.matches(Regex("^[a-zA-Z0-9]+@rajalakshmi\\.edu\\.in\$\n"))){
                 Toast.makeText(this,"Invalid Username",Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            //accept only 4 digit of pin numbers
             if(!password.matches(Regex("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@\$!%*?&])[A-Za-z\\d@\$!%*?&]{8,}\$\n"))){
                 Toast.makeText(this,"Invalid PIN",Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            //navigate to success page
             val intent: Intent = Intent(this,MainActivity2::class.java)
             startActivity(intent)
         }
